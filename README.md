@@ -1,16 +1,38 @@
-# voxcat
+# voxfox
 
-A new Flutter project.
+Appified canvassing questionnaire with GPS.
+Reports are sent as pre-populated email with JSON attachment.
 
-## Getting Started
+## Look
 
-This project is a starting point for a Flutter application.
+![questionnaire](./images/questionnaire.png)
+![sent](./images/sent.png)
+![email](./images/email.png)
 
-A few resources to get you started if this is your first Flutter project:
+## JSON
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```json
+[
+    {
+        "id": "097c3c0c-121a-49b5-b7b4-0c439f5575c3",
+        "altitude": 77.08515381342913,
+        "latitude": 53.3288355,
+        "longitude": -6.2509111,
+        "timestamp": "2021-06-25T21:38:24.562607Z",
+        "questionnaire": [
+            {
+                "question": "Address",
+                "answer": "1 Nice Street"
+            },
+            {
+                "question": "Expected vote",
+                "answer": "Possible vote or transfer"
+            },
+            {
+                "question": "Comments",
+                "answer": "road works"
+            }
+        ]
+    }
+]
+```
