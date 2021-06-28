@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:voxcat/question_answer_pair.dart';
 import 'package:voxcat/questionnaire_submitter.dart';
 import 'package:voxcat/sent_page.dart';
-import 'package:voxcat/submitted_questionnaires_file_manager.dart';
 import 'package:voxcat/text_field.dart';
 import 'package:voxcat/radio_buttons.dart';
 import 'package:voxcat/vox_question_widget.dart';
@@ -104,8 +103,7 @@ class _MyHomePageState extends State<MyHomePage>
       QuestionnaireSubmitter submitter = QuestionnaireSubmitter();
       submitter.submit(qas);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-              'Successfully submitted: ${_textField.answer} ${_radioButtons.answer} ${_textField2.answer}')));
+          duration: Duration(milliseconds: 250), content: Text('Successful')));
       questionWidgets.forEach((widget) {
         if (widget.shouldResetAfterSubmit) {
           widget.reset();

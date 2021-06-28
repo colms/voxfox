@@ -5,7 +5,7 @@ class GeoLocator {
   ///
   /// When the location services are not enabled or permissions
   /// are denied the `Future` will return an error.
-  Future<Position> determinePosition() async {
+  Future<Position?> determinePosition({required attempts}) async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -39,6 +39,19 @@ class GeoLocator {
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
+    for (int attempt = 0; attempt < attempts; attempt++) {
+      try {
+        return await Geolocator.getCurrentPosition(
+            timeLimit: Duration(seconds: 10));
+      } catch (e, stackTrace) {
+        if (attempt < attempts) {
+          print('Retrying location query. Attempt $attempt of $attempts');
+          continue;
+        }
+        print(e);
+        print(stackTrace);
+        return await Geolocator.getLastKnownPosition();
+      }
+    }
   }
 }

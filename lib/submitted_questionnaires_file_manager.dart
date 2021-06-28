@@ -11,18 +11,6 @@ enum QuestionnaireDirectory { outbox, sent, reports }
 
 class SubmittedQuestionnairesFileManager {
   Future<void> init() async {
-    final directory = await getApplicationDocumentsDirectory();
-    final allFiles = directory.listSync(recursive: true);
-    allFiles.forEach((fileName) {
-      print(fileName);
-    });
-
-    // final fileNames = Directory('/data/user/0/com.example.voxcat/app_flutter/questionnaires/outbox/').listSync();
-    // fileNames.forEach((fileName) {
-    //   print(fileName);
-    //   fileName.deleteSync();
-    // });
-
     createDir(await _outboxDirPath);
     createDir(await _sentDirPath);
     createDir(await _reportDirPath);
@@ -96,7 +84,6 @@ class SubmittedQuestionnairesFileManager {
     List<SubmittedQuestionnaire> qs = jsonFiles
         .map((fileJson) => SubmittedQuestionnaire.fromJson(fileJson))
         .toList();
-    qs.forEach((q) => print(jsonEncode(q)));
     return qs;
   }
 

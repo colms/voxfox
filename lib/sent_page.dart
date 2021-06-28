@@ -79,7 +79,6 @@ class _SentPageState extends State<SentPage> {
         platformResponse = 'unknown';
         break;
     }
-    print('platformResponse $platformResponse');
     return platformResponse;
   }
 }

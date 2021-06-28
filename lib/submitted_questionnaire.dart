@@ -34,7 +34,6 @@ class SubmittedQuestionnaire {
   }
 
   SubmittedQuestionnaire.fromJson(String json) {
-    print('fromJson: $json');
     Map<String, dynamic> jsonMap = jsonDecode(json);
     List<dynamic> qas = jsonMap['questionnaire'];
     this.id = jsonMap['id'];
